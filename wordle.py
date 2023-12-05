@@ -5,7 +5,7 @@ import os
 def wordle():
 
     #Opening a txt file with the english dictionary, turning it into a numpy array
-    filepath = os.getcwd()+"\Wordle\sgb-words.txt"
+    filepath = os.getcwd()+"\sgb-words.txt"
     wordlistFile = open(filepath)
     fiveLetterWords = np.array(wordlistFile.readlines())
     
@@ -40,10 +40,18 @@ def wordle():
             if guess == "end":
                 break
 
-            #Check if the user inputted a five-letter word. If not, tell the user about their mistake and prompt for an input again
+            #Check if the user inputted a valid five-letter word. If not, tell the user about their mistake and prompt for an input again
+            #First, check if the word has five letters
             if len(guess) != 5:
                 print("Please type a five-letter word",flush=True)
                 print("------------")
+            
+            #Then, if it does, check if it is a valid word that matches the wordlist
+            elif np.size(np.where(fiveLetterWords == guess+"\n")) == 0:
+                print("Are you sure that's a word? Please try again")
+                print("------------")
+            
+            #Once the user types something that passes these checks, break out of this while loop and continue on to the main body of the function
             else:
                 break
         
@@ -65,6 +73,7 @@ def wordle():
                 status[n] = "!"
 
         #Print the results of the user's guess
+        print(guess)
         print(status[0]+status[1]+status[2]+status[3]+status[4],flush=True)
         print("------------")
 
