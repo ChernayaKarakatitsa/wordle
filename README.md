@@ -9,3 +9,5 @@ Download all three, the python file and jupyter notebook give two slightly diffe
 I haven't quite ironed out all the filepath issues with the two files, so you might have to do some edits to those after downloading. If you run into any issues, make sure your working directory is all sorted out and edit filepaths as necessary.
 
 Otherwise, call the wordle() function in its own code cell in the jupyter notebook to play, or run the entire .py file to play via the terminal. The game will give you instructions. Enjoy!
+
+Credit for the list of five-letter words goes to charlesreid1, I found the text file in their public repo.
